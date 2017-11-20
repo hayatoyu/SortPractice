@@ -50,6 +50,24 @@ namespace SortPractice
             Console.Write("\n請按任意鍵繼續");
             Console.ReadLine();
             #endregion
+
+            #region 合併排序法
+            // ========== Merge Test ==========
+            Console.WriteLine("插入排序法測試");
+            int[] m_a = new int[11];
+            a.CopyTo(m_a, 0);
+            string[] m_b = new string[8];
+            b.CopyTo(m_b, 0);
+            SortingPractice.MergeSort(ref m_a);
+            for (int i = 0; i < m_a.Length; i++)
+                Console.Write(m_a[i] + "\t");
+            Console.Write("\n");
+            SortingPractice.MergeSort(ref m_b);
+            for (int i = 0; i < m_b.Length; i++)
+                Console.Write(m_b[i] + "\t");
+            Console.Write("\n請按任意鍵繼續");
+            Console.ReadLine();
+            #endregion
         }
     }
 }

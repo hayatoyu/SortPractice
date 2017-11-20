@@ -89,10 +89,11 @@ namespace SortPractice
                     left.RemoveAt(0);
                 }
             }
-            if(left.Count > 0)
-            {
-                
-            }
+            if (left.Count > 0)
+                temp.AddRange(left);
+            else if (right.Count > 0)
+                temp.AddRange(right);
+            return temp;
         }
     }
 }
