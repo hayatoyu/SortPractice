@@ -8,6 +8,7 @@ namespace SortPractice
 {
     class SortingPractice
     {
+        #region 氣泡排序法
         public static void BubbleSort<T> (ref T[] array) where T : IComparable<T>
         {
             T temp;
@@ -32,6 +33,9 @@ namespace SortPractice
 
         }
 
+        #endregion
+
+        #region 插入排序法
         public static void InsertionSort<T> (ref T[] array) where T : IComparable<T>
         {
             for(int i = 1;i < array.Length;i++)
@@ -52,6 +56,9 @@ namespace SortPractice
             }
             
         }
+        #endregion
+
+        #region 合併排序法
 
         public static void MergeSort<T> (ref T[] array) where T : IComparable<T>
         {
@@ -95,5 +102,37 @@ namespace SortPractice
                 temp.AddRange(right);
             return temp;
         }
+
+        #endregion
+
+        #region 快速排序法
+        public static void QuickSort<T>(ref T[] array) where T : IComparable<T>
+        {
+            array = QuickSort(array.ToList()).ToArray();
+        }
+        private static List<T> QuickSort<T>(List<T> list) where T : IComparable<T>
+        {
+            if (list.Count < 2)
+                return list;
+
+            List<T> less = new List<T>();
+            List<T> greater = new List<T>();
+            List<T> result = new List<T>();
+            T pivot = list[list.Count / 2];
+            list.RemoveAt(list.Count / 2);
+
+            foreach(T t in list)
+            {
+                if (pivot.CompareTo(t) > 0)
+                    less.Add(t);
+                else
+                    greater.Add(t);
+            }
+            result.AddRange(QuickSort(less));
+            result.Add(pivot);
+            result.AddRange(QuickSort(greater));
+            return result;
+        }
+        #endregion
     }
 }
